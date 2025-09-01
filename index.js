@@ -69,3 +69,69 @@
 //         ageResult.textContent = "Please enter a valid age";
 //     }
 // }
+
+
+
+// const guessInput = document.getElementById('guessInput');
+// const guessBtn = document.getElementById('guessBtn');
+// const result = document.getElementById('result');
+// let randomNumber = Math.floor(Math.random() * 100) + 1;
+// let userGuess;
+
+// guessBtn.onclick = function() {
+//     userGuess = Number(guessInput.value);
+
+//     if (userGuess < 1 || userGuess > 100) {
+//         result.textContent = "Please enter a number between 1 and 100";
+//     } else if (userGuess < randomNumber) {
+//         result.textContent = "Too low! Try again.";
+//     } else if (userGuess > randomNumber) {
+//         result.textContent = "Too high! Try again.";
+//     } else {
+//         result.textContent = "Congratulations! You've guessed the number!";
+
+//         // Generate a new random number for the next round
+//         randomNumber = Math.floor(Math.random() * 100) + 1;
+//     }
+//     guessInput.value = '';
+//     guessInput.focus();
+// }
+
+
+
+//     const celsiusInput = document.getElementById('textbox').value;
+//     const fahrenheitInput = document.getElementById('fahrenheitInput').checked;
+//     const celsiusRadio = document.getElementById('celsiusInput').checked;
+//     const result = document.getElementById('result');
+//     let temp;
+// function convert() {
+//     if (fahrenheitInput.checked){
+//             temp = Number(textbox.value);
+//         temp = temp * 9 / 5 + 32;
+// result.textContent = temp.toFixed(1) + "F";
+//     } else if (celsiusInput.checked) {
+//             temp = Number(textbox.value);
+//         temp = (temp - 32) * (5 / 9);
+// result.textContent = temp.toFixed(1) + "C";
+//     } else {
+//        result.textContent = "Select a unit"
+//     }
+// }
+
+
+
+const diceInput = document.getElementById('diceInput');
+const diceResult = document.getElementById('diceResult');
+const imgResult = document.getElementById('imgResult');
+const values = [];
+images = [];
+function rollDice() {
+    let dice = Number(diceInput.value);
+    for (let i = 0; i < dice; i++) {
+        let value = Math.floor(Math.random() * 6) + 1;
+        values.push(value);
+        images.push('<img src="dice" + roll + ".png" alt="Dice + roll +" width="50" height="50">');
+    }
+    diceResult.textContent = "You rolled: " + values.join(', ');
+    imgResult.innerHTML = images.join(' ');
+}
