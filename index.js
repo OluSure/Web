@@ -119,19 +119,60 @@
 // }
 
 
+// function rollDice() {
+// const diceInput = document.getElementById('diceInput');
+// const diceResult = document.getElementById('diceResult');
+// const imgResult = document.getElementById('imgResult');
+// const values = [];
+// images = [];
 
-const diceInput = document.getElementById('diceInput');
-const diceResult = document.getElementById('diceResult');
-const imgResult = document.getElementById('imgResult');
-const values = [];
-images = [];
-function rollDice() {
-    let dice = Number(diceInput.value);
-    for (let i = 0; i < dice; i++) {
-        let value = Math.floor(Math.random() * 6) + 1;
-        values.push(value);
-        images.push('<img src="dice" + roll + ".png" alt="Dice + roll +" width="50" height="50">');
+//     let dice = Number(diceInput.value);
+//     for (let i = 0; i < dice; i++) {
+//         let value = Math.floor(Math.random() * 6) + 1;
+//         values.push(value);
+//         images.push('<img src="dice" + roll + ".png" alt="Dice" + roll +"h" width="50" height="50">');
+//     }
+//     diceResult.textContent = "You rolled: " + values.join(', ');
+//     imgResult.innerHTML = images.join(' ');
+// }
+
+
+pass.onclick = function GeneratePassword() {
+    const lengthInput = document.getElementById('lengthInput');
+    const uppercaseInput = document.getElementById('uppercaseInput');
+    const lowercaseInput = document.getElementById('lowercaseInput');
+    const numbersInput = document.getElementById('numbersInput');
+    const symbolsInput = document.getElementById('symbolsInput');
+    const passwordResult = document.getElementById('passwordResult');
+    const length = Number(lengthInput.value);
+    const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+    const numberChars = '0123456789';
+    const symbolChars = '!@#$%^&*()_+[]{}|;:,.<>?';
+    let allChars = '';
+    let password = '';
+    if (uppercaseInput.checked) {
+        allChars += uppercaseChars ? uppercaseChars : ''; 
     }
-    diceResult.textContent = "You rolled: " + values.join(', ');
-    imgResult.innerHTML = images.join(' ');
+    if (lowercaseInput.checked) {
+        allChars += lowercaseChars ? lowercaseChars : '';
+    }
+    if (numbersInput.checked) {
+        allChars += numberChars ? numberChars : '';
+    }
+    if (symbolsInput.checked) {
+        allChars += symbolChars ? symbolChars : '';
+    }
+    if (allChars === '') {
+        passwordResult.textContent = 'Please select at least one character type';
+        return;
+    }
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * allChars.length);
+        password += allChars[randomIndex];
+    }
+    passwordResult.textContent = password;
+return password;
+
 }
+

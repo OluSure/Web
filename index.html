@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Developement</title>
+    <title>Web Developement Apps</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -43,12 +43,29 @@
 <div id="result"></div>
 </form> -->
 
-<h1 class="Task">Dice Roller</h1>
+<!-- <h1 class="Task">Dice Roller</h1>
 <label for="diceInput">Number of Dice you want to roll:</label>
     <input type="number" id="diceInput" placeholder="Enter number of dice to roll" value="1" min="1" max="6"><br>
     <button type="button" onclick="rollDice()">Roll Dice</button>
     <div id="diceResult"></div>
-    <div id="imgResult"></div>
+    <div id="imgResult"></div> -->
+
+  <h1>Password Generator</h1>
+    <label for="lengthInput">Password Length:</label>
+    <input type="number" id="lengthInput" placeholder="Enter password length" value="12" min="4" max="20"><br>
+    <label for="uppercaseInput">Include Uppercase Letters</label>
+    <input type="checkbox" id="uppercaseInput" checked><br>
+    <label for="lowercaseInput">Include Lowercase Letters</label>
+    <input type="checkbox" id="lowercaseInput" checked><br>
+    <label for="numbersInput">Include Numbers</label>
+    <input type="checkbox" id="numbersInput" checked><br>
+    <label for="symbolsInput">Include Symbols</label>
+    <input type="checkbox" id="symbolsInput" checked><br>    
+    <button type="button" id="pass">Generate Password</button>
+    <div id="passwordResult"></div>
+    <div id="strengthResult"></div>
+    <div id="copyResult"></div>
+
 
 <!-- <h1>Use My Calculator</h1>
 <label id="calcLabel">0</label><br>
