@@ -137,42 +137,89 @@
 // }
 
 
-pass.onclick = function GeneratePassword() {
-    const lengthInput = document.getElementById('lengthInput');
-    const uppercaseInput = document.getElementById('uppercaseInput');
-    const lowercaseInput = document.getElementById('lowercaseInput');
-    const numbersInput = document.getElementById('numbersInput');
-    const symbolsInput = document.getElementById('symbolsInput');
-    const passwordResult = document.getElementById('passwordResult');
-    const length = Number(lengthInput.value);
-    const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
-    const numberChars = '0123456789';
-    const symbolChars = '!@#$%^&*()_+[]{}|;:,.<>?';
-    let allChars = '';
-    let password = '';
-    if (uppercaseInput.checked) {
-        allChars += uppercaseChars ? uppercaseChars : ''; 
-    }
-    if (lowercaseInput.checked) {
-        allChars += lowercaseChars ? lowercaseChars : '';
-    }
-    if (numbersInput.checked) {
-        allChars += numberChars ? numberChars : '';
-    }
-    if (symbolsInput.checked) {
-        allChars += symbolChars ? symbolChars : '';
-    }
-    if (allChars === '') {
-        passwordResult.textContent = 'Please select at least one character type';
-        return;
-    }
-    for (let i = 0; i < length; i++) {
-        const randomIndex = Math.floor(Math.random() * allChars.length);
-        password += allChars[randomIndex];
-    }
-    passwordResult.textContent = password;
-return password;
 
+// pass.onclick = function GeneratePassword() {
+//     const lengthInput = document.getElementById('lengthInput');
+//     const uppercaseInput = document.getElementById('uppercaseInput');
+//     const lowercaseInput = document.getElementById('lowercaseInput');
+//     const numbersInput = document.getElementById('numbersInput');
+//     const symbolsInput = document.getElementById('symbolsInput');
+//     const passwordResult = document.getElementById('passwordResult');
+//     const length = Number(lengthInput.value);
+//     const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+//     const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+//     const numberChars = '0123456789';
+//     const symbolChars = '!@#$%^&*()_+[]{}|;:,.<>?';
+//     let allChars = '';
+//     let password = '';
+//     if (uppercaseInput.checked) {
+//         allChars += uppercaseChars ? uppercaseChars : ''; 
+//     }
+//     if (lowercaseInput.checked) {
+//         allChars += lowercaseChars ? lowercaseChars : '';
+//     }
+//     if (numbersInput.checked) {
+//         allChars += numberChars ? numberChars : '';
+//     }
+//     if (symbolsInput.checked) {
+//         allChars += symbolChars ? symbolChars : '';
+//     }
+//     if (allChars === '') {
+//         passwordResult.textContent = 'Please select at least one character type';
+//         return;
+//     }
+//     for (let i = 0; i < length; i++) {
+//         const randomIndex = Math.floor(Math.random() * allChars.length);
+//         password += allChars[randomIndex];
+//     }
+//     passwordResult.textContent = password;
+// return password;
+// }
+
+
+
+function updateClock() {
+    const hoursSpan = document.getElementById('hours');
+    const minutesSpan = document.getElementById('minutes');
+    const secondsSpan = document.getElementById('seconds');
+    let hours = parseInt(hoursSpan.textContent);
+    let minutes = parseInt(minutesSpan.textContent);
+    let seconds = parseInt(secondsSpan.textContent);    
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+            if (hours >= 24) {
+                hours = 0;
+            }
+        }   
+    }
+    hoursSpan.textContent = String(hours).padStart(2, '0');
+    minutesSpan.textContent = String(minutes).padStart(2, '0');
+    secondsSpan.textContent = String(seconds).padStart(2, '0');
 }
+
+let clockInterval;
+
+document.getElementById('startBtn').onclick = function() {
+    if (!clockInterval) {
+        clockInterval = setInterval(updateClock, 1000);
+    }
+}
+document.getElementById('stopBtn').onclick = function() {
+    clearInterval(clockInterval);
+    clockInterval = null;
+}
+document.getElementById('resetBtn').onclick = function() {
+    clearInterval(clockInterval);
+    clockInterval = null;
+    document.getElementById('hours').textContent = '00';    
+    document.getElementById('minutes').textContent = '00';    
+    document.getElementById('seconds').textContent = '00';    
+}
+
+
 

@@ -28,3 +28,9 @@ button {
     color: white;
     transition: background-color 0.3s;
 }
+#clock {
+    font-size: 48px;
+    text-align: left;
+    margin-top: 20px;
+    margin: 20px;
+}
