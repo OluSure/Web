@@ -66,7 +66,7 @@
     <div id="strengthResult"></div>
     <div id="copyResult"></div> -->
 
-    <h1>Stop Watch</h1>
+    <!-- <h1>Stop Watch</h1>
     <div id="clock">
         <span id="hours">00</span> :
         <span id="minutes">00</span> :
@@ -74,20 +74,31 @@
     </div>
     <button id="startBtn">Start</button>
     <button id="stopBtn">Stop</button>
-    <button id="resetBtn">Reset</button>
+    <button id="resetBtn">Reset</button> -->
 
-
-<!-- <h1>Use My Calculator</h1>
-<label id="calcLabel">0</label><br>
-<div id="btnContainer">
-<button id="addBtn">+</button>
-<button id="subtractBtn">-</button> 
-<button id="multiplyBtn">*</button>
-<button id="divideBtn">/</button>
-<button id="resetBtn">Reset</button>
-</div> -->
-
-
+    <h1 class="Calculator">Calculator</h1>
+    <div class="calculator">
+        <input type="text" id="calcDisplay" disabled>
+        <div class="buttons">
+                        <button class="btn operator" onclick="apend('/')">/</button>
+            <button class="btn" onclick="apend('7')">7</button>
+            <button class="btn" onclick="apend('8')">8</button>
+            <button class="btn" onclick="apend('9')">9</button>
+                        <button class="btn operator" onclick="apend('*')">*</button>
+            <button class="btn" onclick="apend('4')">4</button>
+            <button class="btn" onclick="apend('5')">5</button>
+            <button class="btn" onclick="apend('6')">6</button>
+                        <button class="btn operator" onclick="apend('-')">-</button>
+            <button class="btn" onclick="apend('1')">1</button>
+            <button class="btn" onclick="apend('2')">2</button>
+            <button class="btn" onclick="apend('3')">3</button>
+                        <button class="btn operator" onclick="apend('+')">+</button>
+            <button class="btn" onclick="apend('0')">0</button>
+            <button class="btn" onclick="apend('.')">.</button>
+            <button class="btn" onclick="clearBtn()">C</button>
+            <button class="btn equal" onclick="equalsBtn()">=</button>
+        </div>
+    </div>
 
 
     <script src="index.js"></script>

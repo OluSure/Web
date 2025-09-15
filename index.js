@@ -178,48 +178,70 @@
 
 
 
-function updateClock() {
-    const hoursSpan = document.getElementById('hours');
-    const minutesSpan = document.getElementById('minutes');
-    const secondsSpan = document.getElementById('seconds');
-    let hours = parseInt(hoursSpan.textContent);
-    let minutes = parseInt(minutesSpan.textContent);
-    let seconds = parseInt(secondsSpan.textContent);    
-    seconds++;
-    if (seconds >= 60) {
-        seconds = 0;
-        minutes++;
-        if (minutes >= 60) {
-            minutes = 0;
-            hours++;
-            if (hours >= 24) {
-                hours = 0;
-            }
-        }   
-    }
-    hoursSpan.textContent = String(hours).padStart(2, '0');
-    minutesSpan.textContent = String(minutes).padStart(2, '0');
-    secondsSpan.textContent = String(seconds).padStart(2, '0');
+// function updateClock() {
+//     const hoursSpan = document.getElementById('hours');
+//     const minutesSpan = document.getElementById('minutes');
+//     const secondsSpan = document.getElementById('seconds');
+//     let hours = parseInt(hoursSpan.textContent);
+//     let minutes = parseInt(minutesSpan.textContent);
+//     let seconds = parseInt(secondsSpan.textContent);    
+//     seconds++;
+//     if (seconds >= 60) {
+//         seconds = 0;
+//         minutes++;
+//         if (minutes >= 60) {
+//             minutes = 0;
+//             hours++;
+//             if (hours >= 24) {
+//                 hours = 0;
+//             }
+//         }   
+//     }
+//     hoursSpan.textContent = String(hours).padStart(2, '0');
+//     minutesSpan.textContent = String(minutes).padStart(2, '0');
+//     secondsSpan.textContent = String(seconds).padStart(2, '0');
+// }
+
+// let clockInterval;
+
+// document.getElementById('startBtn').onclick = function() {
+//     if (!clockInterval) {
+//         clockInterval = setInterval(updateClock, 1000);
+//     }
+// }
+// document.getElementById('stopBtn').onclick = function() {
+//     clearInterval(clockInterval);
+//     clockInterval = null;
+// }
+// document.getElementById('resetBtn').onclick = function() {
+//     clearInterval(clockInterval);
+//     clockInterval = null;
+//     document.getElementById('hours').textContent = '00';    
+//     document.getElementById('minutes').textContent = '00';    
+//     document.getElementById('seconds').textContent = '00';    
+// }
+
+
+
+//Calculator    
+let display = document.getElementById('calcDisplay');
+
+function apend(enter){
+    display.value += enter;
+}
+function clearBtn(){
+    display.value ="";
 }
 
-let clockInterval;
-
-document.getElementById('startBtn').onclick = function() {
-    if (!clockInterval) {
-        clockInterval = setInterval(updateClock, 1000);
+function equalsBtn(){
+    try {
+        display.value = eval(display.value);
+    }
+    catch(error){
+        display.value = "Error";
     }
 }
-document.getElementById('stopBtn').onclick = function() {
-    clearInterval(clockInterval);
-    clockInterval = null;
-}
-document.getElementById('resetBtn').onclick = function() {
-    clearInterval(clockInterval);
-    clockInterval = null;
-    document.getElementById('hours').textContent = '00';    
-    document.getElementById('minutes').textContent = '00';    
-    document.getElementById('seconds').textContent = '00';    
-}
+
 
 
 
