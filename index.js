@@ -224,24 +224,70 @@
 
 
 //Calculator    
-let display = document.getElementById('calcDisplay');
+// let display = document.getElementById('calcDisplay');
 
-function apend(enter){
-    display.value += enter;
-}
-function clearBtn(){
-    display.value ="";
-}
+// function apend(enter){
+//     display.value += enter;
+// }
+// function clearBtn(){
+//     display.value ="";
+// }
 
-function equalsBtn(){
-    try {
-        display.value = eval(display.value);
+// function equalsBtn(){
+//     try {
+//         display.value = eval(display.value);
+//     }
+//     catch(error){
+//         display.value = "Error";
+//     }
+// }
+
+
+
+rockBtn = document.getElementById('rockBtn');
+paperBtn = document.getElementById('paperBtn');
+scissorBtn = document.getElementById('scissorBtn');
+playerSpan = document.getElementById('player');
+computerSpan = document.getElementById('computer');
+result = document.getElementById('result');
+let userChoice;
+let computerChoice;
+let Pwin = 0;
+let Cwin = 0;
+let choices = ['Rock', 'Paper', 'Scissor'];
+rockBtn.onclick = function() {
+    userChoice = 'Rock';
+    playGame();
+}
+paperBtn.onclick = function() {
+    userChoice = 'Paper';
+    playGame();
+}
+scissorBtn.onclick = function() {
+    userChoice = 'Scissor';
+    playGame();
+}
+function playGame() {
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    computerChoice = choices[randomIndex];
+    if (userChoice === computerChoice) {
+        result.textContent = `It's a tie! You both chose ${userChoice}.`;
     }
-    catch(error){
-        display.value = "Error";
+    else if (
+        (userChoice === 'Rock' && computerChoice === 'Scissor') ||
+        (userChoice === 'Paper' && computerChoice === 'Rock') ||
+        (userChoice === 'Scissor' && computerChoice === 'Paper')
+    ) {
+        result.textContent = `You win! ${userChoice} beats ${computerChoice}.`;
+        Pwin++;
+    } else {
+        result.textContent = `You lose! ${computerChoice} beats ${userChoice}.`;
+        Cwin++;
     }
-}
+    playerSpan.textContent = Pwin;
+    computerSpan.textContent = Cwin;
 
+}
 
 
 
