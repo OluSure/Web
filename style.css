@@ -6,6 +6,12 @@ body {
     color: #333;
 }
 
+section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
 #countLabel {
     display: block;
     font-size: 24px;
